@@ -1,7 +1,7 @@
 import Products from "./products/Products";
 import "./App.css";
 import Item from "./Item/Item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Basket from "./cart/Cart";
 import Invoice from "./Invoice/Invoice";
 // import PerfumeContext from "./context/ProductContext";
@@ -55,3 +55,15 @@ function App() {
 }
 
 export default App;
+
+//  // const [serial, setSerial] = useState([{ sn: 22, am: 500 }]);
+
+// useEffect(() => {
+//   if (serial) {
+//     localStorage.setItem("SN", JSON.stringify(serial));
+//   }
+// }, [serial]);
+
+// const handleData = () => {
+//   setSerial((serial) => [...serial, { sn: 1022, am: 600 }]);
+// };

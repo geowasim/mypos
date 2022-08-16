@@ -1,66 +1,50 @@
 [
   {
     "id": 1,
-    "title": "رحيق",
+    "title": "Fiore",
     "image": "https://images.unsplash.com/photo-1582211594533-268f4f1edcb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
-    "price": "173.913",
-    "description": "مزيج من البرتقال والصندل مع سحر اللافندر",
+    "price": "199",
+    "description": "",
     "vol": "200"
   },
   {
     "id": 2,
-    "title": "مشاعر",
+    "title": "Oro",
     "image": "https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "مزيج من القرنفل والفانيلا مع زهرة الفل",
+    "price": "199",
+    "description": "",
     "vol": "200"
   },
   {
     "id": 3,
-    "title": "عبق الربيع",
+    "title": "Stella ",
     "image": "https://images.unsplash.com/photo-1588482587611-692b19ee797b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    "price": "173.913",
-    "description": "مزيج من البرتقال والصندل مع سحراللافندر",
+    "price": "199",
+    "description": "",
     "vol": "200"
   },
   {
     "id": 4,
-    "title": "همسات",
+    "title": "Viola",
     "image": "https://images.unsplash.com/photo-1610113774510-8d3a284b7315?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "مزيج من البرتقال والصندل مع سحراللافندر",
+    "price": "199",
+    "description": "",
     "vol": "200"
   },
   {
     "id": 5,
-    "title": "صداقة",
+    "title": "Hair mist",
     "image": "https://images.unsplash.com/photo-1630573133526-8d090e0269af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzV8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "الياسمين مع الليمون والبرتقال",
-    "vol": "200"
+    "price": "68",
+    "description": "",
+    "vol": ""
   },
   {
     "id": 6,
-    "title": "محبوبة",
+    "title": "Odor freshener",
     "image": "https://images.unsplash.com/photo-1624811742200-69166e7b7bcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzd8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "مزيج من القرنفل مع عطر زهر اللوز والياسمين",
-    "vol": "200"
-  },
-  {
-    "id": 7,
-    "title": "مرهفة",
-    "image": "https://images.unsplash.com/photo-1633772695640-b82bf3e3f1cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODJ8fHBlcmZ1bWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "مزيج من عشبة الليمون والبرتقال مع القرفة",
-    "vol": "200"
-  },
-  {
-    "id": 8,
-    "title": "لقاء",
-    "image": "https://images.unsplash.com/photo-1603547547037-cb2289fecaa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM0fHxwZXJmdW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    "price": "173.913",
-    "description": "مزيج من الليمون والشاي الأخضر  ",
+    "price": "49",
+    "description": "",
     "vol": "200"
   },
   {

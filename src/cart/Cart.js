@@ -1,12 +1,14 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { ComponentToPrint } from "../ComponentToPrint/ComponentToPrint";
 
 import "./Cart.css";
 import MyImage from "../img/QandellaCompanyLogo1.png";
+import Payment from "../payments/Payment";
 
 const Basket = (props) => {
   const { cartItems, onAdd, onRemove } = props;
+  const [method, setMethod] = useState("Mada");
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
 
@@ -21,6 +23,10 @@ const Basket = (props) => {
 
   const handlePrint = () => {
     handleReactToPrint();
+  };
+
+  const checkPaymentMethod = (v) => {
+    setMethod(v);
   };
 
   return (
@@ -50,11 +56,14 @@ const Basket = (props) => {
         {cartItems.length !== 0 && (
           <>
             <div style={{ display: "none" }}>
+              {/* ---------- */}
               <ComponentToPrint
                 cartItems={cartItems}
                 itemsPrice={itemsPrice}
                 ref={componentRef}
+                checkPaymentMethod={checkPaymentMethod}
               />
+              {/* ------------ */}
             </div>
             <br />
             <hr />
@@ -102,23 +111,14 @@ const Basket = (props) => {
             }}
           >
             <div>
-              <form>
-                <label for="paymentMethod">Choose a payment method</label>
-
-                <select name="cash" id="paymentMethod">
-                  <option value="Cash">Cash</option>
-                  <option value="Mada">Mada</option>
-                </select>
-              </form>
+              <Payment
+                itemsPrice={itemsPrice}
+                checkPaymentMethod={checkPaymentMethod}
+              />
+              <button className="itemButton" onClick={handlePrint}>
+                الدفع{" "}
+              </button>
             </div>
-            {cartItems.length !== 0 ? (
-              <button className="itemButton1"> فاتورة جديدة</button>
-            ) : (
-              "add items"
-            )}
-            <button className="itemButton" onClick={handlePrint}>
-              الدفع{" "}
-            </button>
           </div>
         )}
       </div>

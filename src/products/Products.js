@@ -12,7 +12,7 @@ const Products = (props) => {
   return (
     <>
       <div className="products">
-        <h2 style={{ textAlign: "center" }}> </h2>
+        <h3 style={{ textAlign: "center" }}>Products</h3>
         <div className="products">
           {perfumes.map((perfume) => (
             <div
