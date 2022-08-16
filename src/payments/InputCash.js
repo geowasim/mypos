@@ -4,12 +4,14 @@ import "./styles.css";
 const InputCash = (props) => {
   const [value, setValue] = useState(0);
   const [isPrintShown, setIsPrintShown] = useState(false);
+  const { isCach, handlePrint } = props;
+  console.log("cccc", props);
 
   useEffect(() => {
-    if (props.val2 === "") {
-      alert("must be a value");
+    if (isPrintShown) {
+      isCach(isPrintShown);
     }
-  }, [props.val2]);
+  }, [props.val2, isPrintShown, isCach]);
 
   const addNum = (val, val2) => {
     let a = val;
@@ -40,7 +42,7 @@ const InputCash = (props) => {
           width: "108px",
           padding: "0 2px",
           height: "25px",
-          fontSize: "20px"
+          fontSize: "20px",
         }}
       >
         المتبقي للعميل
@@ -50,7 +52,14 @@ const InputCash = (props) => {
         ({value <= 0 ? (value * -1).toFixed(2) : ""})<span>ريال سعودي</span>
       </p>
       {isPrintShown ? (
-        <button onClick={handleRest}>طباعة الفاتورة </button>
+        <button
+          onClick={function (event) {
+            handleRest();
+            handlePrint();
+          }}
+        >
+          طباعة الفاتورة{" "}
+        </button>
       ) : null}
     </div>
   );

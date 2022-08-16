@@ -8,8 +8,8 @@ export default function Mada(props) {
   useEffect(() => {
     if (opp) {
       setTimeout(() => {
-        alert("تأكد من تحويل المبلغ");
-      }, 1000);
+        alert("لطباعة الفاتورة تأكد من تحويل المبلغ");
+      }, 3000);
     }
   }, [opp]);
 
@@ -28,7 +28,6 @@ export default function Mada(props) {
       <h3>
         المبلغ المطلوب : <span> {count} ريال </span>
       </h3>
-      <button onClick={handlePay}>اطبع الفاتورة</button>
     </div>
   );
 }

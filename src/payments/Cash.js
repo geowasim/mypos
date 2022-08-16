@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Cash(props) {
   const count = props.itemsPrice;
+  const { isCach, handlePrint } = props;
+  console.log("caa", props);
   const [count2, setCount2] = useState(null);
 
   const handleaddNumber2 = (e) => {
@@ -23,8 +25,7 @@ export default function Cash(props) {
       <h2>
         Cash <span>كاش</span>
       </h2>
-      <FontAwesomeIcon icon={faMoneyBill1} style={{ fontSize: "50px" }} />
-      <FontAwesomeIcon icon={"fa-light fa-credit-card"} />
+
       <h3>
         المبلغ المطلوب : <span> {count} ريال </span>
       </h3>
@@ -39,6 +40,8 @@ export default function Cash(props) {
         handleRestCount2={handleRestCount2}
         values={count ? count : ""}
         values2={count2 ? count2 : ""}
+        isCach={isCach}
+        handlePrint={handlePrint}
       />
     </div>
   );

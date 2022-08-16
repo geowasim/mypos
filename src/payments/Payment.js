@@ -5,7 +5,8 @@ import "./styles.css";
 import "./payments.css";
 
 export default function Payment(props) {
-  const { itemsPrice, checkPaymentMethod } = props;
+  const { itemsPrice, checkPaymentMethod, isCach, handlePrint } = props;
+  console.log("P", isCach);
   console.log(props);
   const [showCashe, setShowCashe] = useState(false);
   const [showMethod, setShowMethod] = useState("Mada");
@@ -30,7 +31,11 @@ export default function Payment(props) {
       <br />
       <br />
       {showCashe ? (
-        <Cash itemsPrice={itemsPrice} />
+        <Cash
+          itemsPrice={itemsPrice}
+          isCach={isCach}
+          handlePrint={handlePrint}
+        />
       ) : (
         <Mada itemsPrice={itemsPrice} />
       )}

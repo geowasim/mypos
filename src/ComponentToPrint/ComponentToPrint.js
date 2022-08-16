@@ -3,7 +3,7 @@ import MyLogo from "./logoForPrint.png";
 import "./ComponentToPrint.css";
 
 export const ComponentToPrint = React.forwardRef((props, ref) => {
-  const { cartItems, itemsPrice, paymentMethod } = props;
+  const { cartItems, itemsPrice, method } = props;
 
   return (
     <div className="fatorah" ref={ref}>
@@ -72,7 +72,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
           {Math.ceil((itemsPrice * 15) / 100 + itemsPrice)} SAR
         </h4>
         <p>
-          {paymentMethod === "Mada"
+          {method === "Mada"
             ? "payment by : Mada(مدى)"
             : "payment by : Cash(كاش)"}
         </p>

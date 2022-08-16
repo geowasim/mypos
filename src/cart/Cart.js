@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { ComponentToPrint } from "../ComponentToPrint/ComponentToPrint";
 
@@ -9,12 +9,18 @@ import Payment from "../payments/Payment";
 const Basket = (props) => {
   const { cartItems, onAdd, onRemove } = props;
   const [method, setMethod] = useState("Mada");
+  const [isCachDone, setIsCachDone] = useState(false);
+
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
 
   // const taxPrice = itemsPrice * 0.15;
   // const bagPrice = itemsPrice > 300 ? 0 : 7;
   // const totalPrice = itemsPrice +;
+
+  useEffect(() => {
+    console.log("done", isCachDone);
+  }, [isCachDone]);
 
   const componentRef = useRef();
   const handleReactToPrint = useReactToPrint({
@@ -27,6 +33,10 @@ const Basket = (props) => {
 
   const checkPaymentMethod = (v) => {
     setMethod(v);
+  };
+
+  const isCach = (v) => {
+    setIsCachDone(v);
   };
 
   return (
@@ -61,7 +71,7 @@ const Basket = (props) => {
                 cartItems={cartItems}
                 itemsPrice={itemsPrice}
                 ref={componentRef}
-                checkPaymentMethod={checkPaymentMethod}
+                method={method}
               />
               {/* ------------ */}
             </div>
@@ -114,10 +124,14 @@ const Basket = (props) => {
               <Payment
                 itemsPrice={itemsPrice}
                 checkPaymentMethod={checkPaymentMethod}
+                isCach={isCach}
+                handlePrint={handlePrint}
               />
-              <button className="itemButton" onClick={handlePrint}>
-                الدفع{" "}
-              </button>
+              {method === "Mada" ? (
+                <button className="itemButton" onClick={handlePrint}>
+                  الدفع{" "}
+                </button>
+              ) : null}
             </div>
           </div>
         )}
