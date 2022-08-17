@@ -7,7 +7,7 @@ import MyImage from "../img/QandellaCompanyLogo1.png";
 import Payment from "../payments/Payment";
 
 const Basket = (props) => {
-  const { cartItems, resetCartItems, onAdd, onRemove } = props;
+  const { cartItems, resetCartItems, onAdd, onRemove, handleData } = props;
   const [method, setMethod] = useState("Mada");
   const [isCachDone, setIsCachDone] = useState(false);
   const [paidMoney, setPaidMoney] = useState(null);
@@ -130,6 +130,7 @@ const Basket = (props) => {
                 resetCartItems={resetCartItems}
                 moneyFromClient={moneyFromClient}
                 isChange={isChange}
+                handleData={handleData}
               />
               {method === "Mada" ? (
                 <button
@@ -137,6 +138,7 @@ const Basket = (props) => {
                   onClick={() => {
                     handlePrint();
                     resetCartItems();
+                    handleData();
                   }}
                 >
                   الدفع - طباعة

@@ -1,28 +1,54 @@
-// import React, { useRef } from "react";
-// import ReactToPrint from "react-to-print";
-// import "./Invoice.css";
+import { useEffect, useState } from "react";
 
-// import { ComponentToPrint } from "../ComponentToPrint/ComponentToPrint";
+export default function Invoices() {
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("SN")) || [
+      {
+        sn: `${new Date()
+          .toLocaleDateString()
+          .split("")
+          .filter((x) => x !== "/")
+          .join("")}`,
+        am: "000",
+        date: `${new Date().toLocaleDateString()}`,
+      },
+    ]
+  );
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("SN"));
+    console.log(items);
+    if (items) {
+      setData((data) => data, items);
+    }
+    console.log(data);
+  }, [data]);
 
-// const Invoice = (props) => {
-//   const { cartItems, totalPrice } = props;
-//   const componentRef = useRef();
-//   let aaa = false;
-//   return (
-//     <div>
-//       <ReactToPrint
-//         trigger={() =>
-//           aaa ? null : <button className="printInv">Print Invoice</button>
-//         }
-//         content={() => componentRef.current}
-//       />
-//       <ComponentToPrint
-//         ref={componentRef}
-//         cartItems={cartItems}
-//         totalPrice={totalPrice}
-//       />
-//     </div>
-//   );
-// };
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem("SN", JSON.stringify(data));
+    }
+  }, [data]);
 
-// export default Invoice;
+  const handleData = () => {
+    const serialN = Number(data[data.length - 1].sn) + 1;
+    const am = Math.floor(Math.random() * 10);
+
+    setData((data) => [...data, { sn: serialN, am: am }]);
+  };
+
+  return (
+    <>
+      <button onClick={handleData}>,,,,,,,</button>
+
+      {data.map((item) => (
+        <div
+          key={item.sn + 1}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <p>SN/{item.sn}/</p>
+          <p>Ammount:/{item.am}/</p>
+        </div>
+      ))}
+    </>
+  );
+}

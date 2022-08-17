@@ -5,12 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import PerfumeContext from "./context/ProductContext";
 import Perfumes from "./api/db.json";
+import Main from "./Main";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <PerfumeContext.Provider value={Perfumes}>
-      <App />
+      <Main />
     </PerfumeContext.Provider>
   </React.StrictMode>
 );

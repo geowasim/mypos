@@ -3,7 +3,7 @@ import InputCash from "./InputCash";
 
 export default function Cash(props) {
   const count = props.itemsPrice;
-  const { resetCartItems, moneyFromClient } = props;
+  const { resetCartItems, moneyFromClient, handleData } = props;
   const countVat = (count * 15) / 100 + count;
   const { isCach, handlePrint, isChange } = props;
   const [count2, setCount2] = useState(null);
@@ -48,6 +48,7 @@ export default function Cash(props) {
           handlePrint={handlePrint}
           resetCartItems={resetCartItems}
           isChange={isChange}
+          handleData={handleData}
         />
       </div>
     </div>

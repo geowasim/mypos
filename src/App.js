@@ -9,10 +9,18 @@ function App() {
   const [item, setItem] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [data, setData] = useState(
-    JSON.parse(localStorage.getItem("SN")) || [{ sn: "00200", am: 2 }]
+    JSON.parse(localStorage.getItem("SN")) || [
+      {
+        sn: `${new Date()
+          .toLocaleDateString()
+          .split("")
+          .filter((x) => x !== "/")
+          .join("")}`,
+        am: "000",
+        date: `${new Date().toLocaleDateString()}`,
+      },
+    ]
   );
-
-  console.log(data[data.length - 1].sn);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("SN"));
@@ -77,7 +85,7 @@ function App() {
         style={{ display: "flex", flexDirection: "column" }}
       >
         <Products findItem={findItem} />
-        <button onClick={handleData}>,,,,,,,</button>
+        {/* <button onClick={handleData}>,,,,,,,</button>
         {data.map((item) => (
           <div
             key={item.sn + 1}
@@ -86,7 +94,7 @@ function App() {
             <p>SN/{item.sn}/</p>
             <p>Ammount:/{item.am}/</p>
           </div>
-        ))}
+        ))} */}
       </header>
       <Item item={item} onAdd={onAdd} />
       <Basket
@@ -94,6 +102,7 @@ function App() {
         onAdd={onAdd}
         onRemove={onRemove}
         resetCartItems={resetCartItems}
+        handleData={handleData}
       />
       {/* <Invoice cartItems={cartItems} totalPrice={totalPrice} /> */}
     </div>

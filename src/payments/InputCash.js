@@ -4,7 +4,7 @@ import "./styles.css";
 const InputCash = (props) => {
   const [value, setValue] = useState(0);
   const [isPrintShown, setIsPrintShown] = useState(false);
-  const { isCach, handlePrint, resetCartItems, isChange } = props;
+  const { isCach, handlePrint, resetCartItems, isChange, handleData } = props;
 
   useEffect(() => {
     if (isPrintShown) {
@@ -62,6 +62,7 @@ const InputCash = (props) => {
             handleRest();
             handlePrint();
             resetCartItems();
+            handleData();
           }}
           className="itemButton printFromCach"
         >
