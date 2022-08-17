@@ -4,9 +4,8 @@ import "./Item.css";
 
 const Item = (props) => {
   const { onAdd } = props;
-  console.log();
   const perfumes = useContext(PerfumeContext);
-  const [showItem, setShowItem] = useState({});
+  const [showItem, setShowItem] = useState(null);
 
   useEffect(() => {
     const perObj = perfumes.find((item) => item.id === props.item);
@@ -24,14 +23,13 @@ const Item = (props) => {
               src={showItem.image}
               alt={showItem.title}
             />
-            <p className="itemPrice">Price {Math.ceil(showItem.price)} SAR</p>
+            {/* <p className="itemPrice">Price {showItem.price} SAR</p> */}
             <div>
               <p className="itemDes">{showItem.description}</p>
             </div>
             <button className="itemButton" onClick={() => onAdd(showItem)}>
               إضافة للسلة
             </button>
-            {/* <button className="itemButton">شراء مباشرة</button> */}
           </div>
         ) : (
           <div>

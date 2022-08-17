@@ -4,8 +4,7 @@ import "./styles.css";
 const InputCash = (props) => {
   const [value, setValue] = useState(0);
   const [isPrintShown, setIsPrintShown] = useState(false);
-  const { isCach, handlePrint } = props;
-  console.log("cccc", props);
+  const { isCach, handlePrint, resetCartItems } = props;
 
   useEffect(() => {
     if (isPrintShown) {
@@ -34,29 +33,34 @@ const InputCash = (props) => {
   };
 
   return (
-    <div className="App">
+    <div className="inputCach">
       <button
         onClick={() => addNum(props.values, props.values2)}
+        className="itemButton"
         style={{
           border: "1px solid gray",
           width: "108px",
           padding: "0 2px",
-          height: "25px",
-          fontSize: "20px",
+          height: "44px",
+          fontSize: "18px",
+          margin: "0 10px",
+          borderRadius: "5px",
         }}
       >
-        المتبقي للعميل
+        احسب المتبقي
       </button>
-      <p>
+      <p className="remain">
         {" "}
         ({value <= 0 ? (value * -1).toFixed(2) : ""})<span>ريال سعودي</span>
       </p>
       {isPrintShown ? (
         <button
-          onClick={function (event) {
+          onClick={function () {
             handleRest();
             handlePrint();
+            resetCartItems();
           }}
+          className="itemButton printFromCach"
         >
           طباعة الفاتورة{" "}
         </button>

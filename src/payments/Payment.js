@@ -5,48 +5,51 @@ import "./styles.css";
 import "./payments.css";
 
 export default function Payment(props) {
-  const { itemsPrice, checkPaymentMethod, isCach, handlePrint } = props;
-  console.log("P", isCach);
-  console.log(props);
   const [showCashe, setShowCashe] = useState(false);
   const [showMethod, setShowMethod] = useState("Mada");
 
-  if (showMethod === "Mada") {
-    checkPaymentMethod("Mada");
-  } else {
-    checkPaymentMethod("Cash");
-  }
+  const {
+    itemsPrice,
+    checkPaymentMethod,
+    isCach,
+    handlePrint,
+    resetCartItems,
+  } = props;
+  useEffect(() => {
+    if (showMethod === "Mada") {
+      checkPaymentMethod("Mada");
+    } else {
+      checkPaymentMethod("Cash");
+    }
+  });
+
   const handleCashe = () => {
     setShowCashe(!showCashe);
-    if (!showCashe) {
-      setShowMethod("Cash");
-    } else {
-      setShowMethod("Mada");
-    }
+    !showCashe ? setShowMethod("Cash") : setShowMethod("Mada");
+
     console.log(showMethod);
   };
   return (
     <div className="payments">
       <br />
-      <br />
-      <br />
+
       {showCashe ? (
         <Cash
           itemsPrice={itemsPrice}
           isCach={isCach}
           handlePrint={handlePrint}
+          resetCartItems={resetCartItems}
         />
       ) : (
-        <Mada itemsPrice={itemsPrice} />
+        <>
+          <Mada itemsPrice={itemsPrice} />
+        </>
       )}
-      <button
-        onClick={handleCashe}
-        style={{ position: "absolute", top: "25px", left: "auto" }}
-      >
+      <button onClick={handleCashe} className="itemButton change">
         {showCashe ? (
           <>" Mada الرجوع إلى مدى"</>
         ) : (
-          <>"cash/ لتغير إلى الدفع كاش"</>
+          <>cash/ لتغير إلى الدفع كاش</>
         )}
       </button>
     </div>

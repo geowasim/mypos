@@ -56,7 +56,10 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
             {cartItems.length !== 0
               ? cartItems.map((cartProduct, key) => (
                   <tr key={key}>
-                    <td>{cartProduct.title} عطر- perfume</td>
+                    <td>
+                      {cartProduct.title}{" "}
+                      {cartProduct === "Bag" ? "عطر/perfume" : ""}
+                    </td>
                     <td>{cartProduct.qty}</td>
                     <td>{cartProduct.price}</td>
                     <td>{cartProduct.qty * cartProduct.price}</td>
@@ -68,8 +71,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
         <p>VAT 15% {Math.ceil(itemsPrice * 15) / 100}</p>
         <h4 className="px-2">Total without VAT {Math.ceil(itemsPrice)} SAR</h4>
         <h4 className="px-2">
-          Total Amount include VAT:{" "}
-          {Math.ceil((itemsPrice * 15) / 100 + itemsPrice)} SAR
+          Total Amount include VAT: {(itemsPrice * 15) / 100 + itemsPrice} SAR
         </h4>
         <p>
           {method === "Mada"

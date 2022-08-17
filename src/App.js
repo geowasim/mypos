@@ -1,7 +1,7 @@
 import Products from "./products/Products";
 import "./App.css";
 import Item from "./Item/Item";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Basket from "./cart/Cart";
 import Invoice from "./Invoice/Invoice";
 // import PerfumeContext from "./context/ProductContext";
@@ -11,6 +11,9 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const resetCartItems = () => {
+    setCartItems([]);
+  };
   const findItem = (id) => {
     setItem(id);
   };
@@ -48,7 +51,12 @@ function App() {
         <Products findItem={findItem} />
       </header>
       <Item item={item} onAdd={onAdd} />
-      <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+      <Basket
+        cartItems={cartItems}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        resetCartItems={resetCartItems}
+      />
       {/* <Invoice cartItems={cartItems} totalPrice={totalPrice} /> */}
     </div>
   );

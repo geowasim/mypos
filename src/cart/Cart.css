@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   right: 5vw;
+  width: 33vw;
 }
 .basket {
   color: #fff;
@@ -31,8 +32,9 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 9px;
   flex-direction: column;
+  font-size: 15px;
 }
 .cartLogo img {
   box-shadow: none;
@@ -77,6 +79,20 @@ hr {
 
 .totalPrice {
   margin-top: 20px;
+}
+
+.paymentArea {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.pay {
+  position: absolute;
+  bottom: 160px;
+  right: 0vw;
+  font-size: 2rem;
 }
 
 .copyRights {

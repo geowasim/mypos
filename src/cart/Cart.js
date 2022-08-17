@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { ComponentToPrint } from "../ComponentToPrint/ComponentToPrint";
 
@@ -7,20 +7,17 @@ import MyImage from "../img/QandellaCompanyLogo1.png";
 import Payment from "../payments/Payment";
 
 const Basket = (props) => {
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, resetCartItems, onAdd, onRemove } = props;
   const [method, setMethod] = useState("Mada");
   const [isCachDone, setIsCachDone] = useState(false);
+  // console.log(cartItems);
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
 
-  // const taxPrice = itemsPrice * 0.15;
+  const taxPrice = itemsPrice * 0.15;
   // const bagPrice = itemsPrice > 300 ? 0 : 7;
-  // const totalPrice = itemsPrice +;
-
-  useEffect(() => {
-    console.log("done", isCachDone);
-  }, [isCachDone]);
+  const totalPrice = taxPrice + itemsPrice;
 
   const componentRef = useRef();
   const handleReactToPrint = useReactToPrint({
@@ -59,7 +56,7 @@ const Basket = (props) => {
               </button>
             </div>
             <div className="basketQT">
-              {item.qty} X {Math.ceil(item.price)}
+              {item.qty} X {Number(item.price) * 0.15 + Number(item.price)}
             </div>
           </div>
         ))}
@@ -75,10 +72,9 @@ const Basket = (props) => {
               />
               {/* ------------ */}
             </div>
-            <br />
             <hr />
-            <br />
-            <div className="row ">
+
+            <div className="row " style={{ margin: "5px 0" }}>
               <div
                 style={{
                   display: "flex",
@@ -86,7 +82,7 @@ const Basket = (props) => {
                   margin: "15px 15px",
                 }}
               >
-                <span>السعر الاجمالي</span> قبل الضريبة
+                <span>السعر الاجمالي</span> شامل الضريبة
               </div>
               <div
                 style={{
@@ -95,7 +91,7 @@ const Basket = (props) => {
                   marginLeft: "15px",
                 }}
               >
-                <span> ريال سعودي</span> {Math.ceil(itemsPrice.toFixed(2))}{" "}
+                <span> ريال سعودي</span> {totalPrice} SAR{" "}
               </div>
               <div
                 style={{
@@ -110,26 +106,26 @@ const Basket = (props) => {
             </div>
           </>
         )}
-        <br />
         <hr />
         {cartItems.length !== 0 && (
-          <div
-            style={{
-              display: "flex",
-              width: "200px",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
+          <div className="payments">
+            <div className="paymentArea">
               <Payment
                 itemsPrice={itemsPrice}
                 checkPaymentMethod={checkPaymentMethod}
                 isCach={isCach}
                 handlePrint={handlePrint}
+                resetCartItems={resetCartItems}
               />
               {method === "Mada" ? (
-                <button className="itemButton" onClick={handlePrint}>
-                  الدفع{" "}
+                <button
+                  className="itemButton pay"
+                  onClick={() => {
+                    handlePrint();
+                    resetCartItems();
+                  }}
+                >
+                  الدفع - طباعة
                 </button>
               ) : null}
             </div>
