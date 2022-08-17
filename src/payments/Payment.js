@@ -14,6 +14,8 @@ export default function Payment(props) {
     isCach,
     handlePrint,
     resetCartItems,
+    moneyFromClient,
+    isChange,
   } = props;
   useEffect(() => {
     if (showMethod === "Mada") {
@@ -27,7 +29,7 @@ export default function Payment(props) {
     setShowCashe(!showCashe);
     !showCashe ? setShowMethod("Cash") : setShowMethod("Mada");
 
-    console.log(showMethod);
+    // console.log(showMethod);
   };
   return (
     <div className="payments">
@@ -39,6 +41,8 @@ export default function Payment(props) {
           isCach={isCach}
           handlePrint={handlePrint}
           resetCartItems={resetCartItems}
+          moneyFromClient={moneyFromClient}
+          isChange={isChange}
         />
       ) : (
         <>

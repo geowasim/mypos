@@ -10,6 +10,8 @@ const Basket = (props) => {
   const { cartItems, resetCartItems, onAdd, onRemove } = props;
   const [method, setMethod] = useState("Mada");
   const [isCachDone, setIsCachDone] = useState(false);
+  const [paidMoney, setPaidMoney] = useState(null);
+  const [change, setChange] = useState(null);
   // console.log(cartItems);
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
@@ -34,6 +36,14 @@ const Basket = (props) => {
 
   const isCach = (v) => {
     setIsCachDone(v);
+  };
+
+  const moneyFromClient = (v) => {
+    setPaidMoney(v);
+  };
+
+  const isChange = (value) => {
+    setChange(value <= 0 ? (value * -1).toFixed(2) : "");
   };
 
   return (
@@ -69,6 +79,8 @@ const Basket = (props) => {
                 itemsPrice={itemsPrice}
                 ref={componentRef}
                 method={method}
+                paidMoney={paidMoney}
+                change={change}
               />
               {/* ------------ */}
             </div>
@@ -116,6 +128,8 @@ const Basket = (props) => {
                 isCach={isCach}
                 handlePrint={handlePrint}
                 resetCartItems={resetCartItems}
+                moneyFromClient={moneyFromClient}
+                isChange={isChange}
               />
               {method === "Mada" ? (
                 <button
@@ -137,7 +151,7 @@ const Basket = (props) => {
         <div className="copyRights">
           <p>
             {" "}
-            Copyright <span>&copy;</span> reserved for Qandella Company -{" "}
+            Copyright <span>&copy;</span> reserved for Alnathra Al-Raqiqa -{" "}
             {new Date().getFullYear()}
           </p>
         </div>

@@ -1,15 +1,40 @@
 import Products from "./products/Products";
 import "./App.css";
 import Item from "./Item/Item";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Basket from "./cart/Cart";
-import Invoice from "./Invoice/Invoice";
 // import PerfumeContext from "./context/ProductContext";
 
 function App() {
   const [item, setItem] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("SN")) || [{ sn: "00200", am: 2 }]
+  );
+
+  console.log(data[data.length - 1].sn);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("SN"));
+    console.log(items);
+    if (items) {
+      setData((data) => data, items);
+    }
+    console.log(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem("SN", JSON.stringify(data));
+    }
+  }, [data]);
+
+  const handleData = () => {
+    const serialN = Number(data[data.length - 1].sn) + 1;
+    const am = Math.floor(Math.random() * 10);
+
+    setData((data) => [...data, { sn: serialN, am: am }]);
+  };
 
   const resetCartItems = () => {
     setCartItems([]);
@@ -47,8 +72,21 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header
+        className="App-header"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <Products findItem={findItem} />
+        <button onClick={handleData}>,,,,,,,</button>
+        {data.map((item) => (
+          <div
+            key={item.sn + 1}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <p>SN/{item.sn}/</p>
+            <p>Ammount:/{item.am}/</p>
+          </div>
+        ))}
       </header>
       <Item item={item} onAdd={onAdd} />
       <Basket
@@ -63,15 +101,3 @@ function App() {
 }
 
 export default App;
-
-//  // const [serial, setSerial] = useState([{ sn: 22, am: 500 }]);
-
-// useEffect(() => {
-//   if (serial) {
-//     localStorage.setItem("SN", JSON.stringify(serial));
-//   }
-// }, [serial]);
-
-// const handleData = () => {
-//   setSerial((serial) => [...serial, { sn: 1022, am: 600 }]);
-// };

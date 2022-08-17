@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Mada(props) {
   const count = props.itemsPrice;
-  const { resetCartItems } = props;
 
   return (
     <div className="mada">
@@ -21,7 +20,7 @@ export default function Mada(props) {
         </h2>
       </div>
 
-      <h2 class="TP">
+      <h2 className="TP">
         المبلغ المطلوب : <span> {count * 0.15 + count} ريال </span>
       </h2>
     </div>

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputCash from "./InputCash";
 
 export default function Cash(props) {
   const count = props.itemsPrice;
-  const { resetCartItems } = props;
+  const { resetCartItems, moneyFromClient } = props;
   const countVat = (count * 15) / 100 + count;
-  const { isCach, handlePrint } = props;
+  const { isCach, handlePrint, isChange } = props;
   const [count2, setCount2] = useState(null);
+
+  useEffect(() => {
+    moneyFromClient(count2);
+  }, [moneyFromClient, count2]);
 
   const handleaddNumber2 = (e) => {
     setCount2(e.target.value);
@@ -43,6 +47,7 @@ export default function Cash(props) {
           isCach={isCach}
           handlePrint={handlePrint}
           resetCartItems={resetCartItems}
+          isChange={isChange}
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import MyLogo from "./logoForPrint.png";
 import "./ComponentToPrint.css";
 
 export const ComponentToPrint = React.forwardRef((props, ref) => {
-  const { cartItems, itemsPrice, method } = props;
+  const { cartItems, itemsPrice, method, paidMoney, change } = props;
 
   return (
     <div className="fatorah" ref={ref}>
@@ -15,12 +15,12 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
         <p>Simplified Vat Invoice</p>
         <p>فاتورة ضريبية مبسطة</p>
 
-        <p>Vat: XXXXXXXX :الرقم الضريبي</p>
+        <p>Vat: 310430668500003 :الرقم الضريبي</p>
 
-        <p>C.R: YYYYYYY :س .ت</p>
+        <p>C.R: 1010208753 :س .ت</p>
       </div>
       <div className="preDataNP">
-        <p>Customer: Expo</p>
+        <p>Customer: Expo Customer</p>
         <p>Phone: </p>
       </div>
       <div className="preDataNP preDataNP_1">
@@ -78,6 +78,23 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
             ? "payment by : Mada(مدى)"
             : "payment by : Cash(كاش)"}
         </p>
+        {method === "Mada" ? (
+          <div className="paid">
+            <p>
+              <span>SAR {(itemsPrice * 15) / 100 + itemsPrice} </span> : المبلغ
+              المستلم
+            </p>
+          </div>
+        ) : (
+          <>
+            <p>
+              <span>SAR {paidMoney} </span> : المبلغ المستلم
+            </p>
+            <p>
+              <span>SAR {change} </span> : المعاد للعميل
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

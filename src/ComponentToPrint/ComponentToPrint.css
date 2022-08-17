@@ -86,3 +86,9 @@ td {
   color: rgb(27, 3, 105);
   margin-right: 15px;
 }
+
+.paid {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
