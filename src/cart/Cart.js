@@ -12,7 +12,6 @@ const Basket = (props) => {
   const [isCachDone, setIsCachDone] = useState(false);
   const [paidMoney, setPaidMoney] = useState(null);
   const [change, setChange] = useState(null);
-  // console.log(cartItems);
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);

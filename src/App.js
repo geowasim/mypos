@@ -51,6 +51,7 @@ function App() {
     if (items) {
       setData((data) => data, items);
     }
+    console.log(1);
   }, [data]);
 
   // setData
@@ -58,6 +59,7 @@ function App() {
     if (data) {
       localStorage.setItem("SN", JSON.stringify(data));
     }
+    console.log(2);
   }, [data]);
 
   const handleData = (ob) => {

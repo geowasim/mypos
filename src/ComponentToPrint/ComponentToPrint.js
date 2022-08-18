@@ -24,7 +24,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
   return (
     <div className="fatorah" ref={ref}>
       <img src={MyLogo} alt="logo" style={{ boxShadow: "none" }} />
-      <h3> شركة كانديـــلا للعطور</h3>
+      <h3> كانديـــلا </h3>
       <br />
       <div className="perData">
         <p>معرض صناع العطور الثاني - الطائف</p>
@@ -35,13 +35,15 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
 
         <p>C.R: 1010208753 :س .ت</p>
       </div>
-      <div className="preDataNP">
-        <p>Customer: Expo Customer</p>
-        <p>Phone: </p>
-      </div>
-      <div className="preDataNP preDataNP_1">
-        <p>Flat: </p>
-        <p>Building:</p>
+      <div className="g1">
+        <div className="preDataNP">
+          <p>Customer: Expo Customer</p>
+          <p>Phone: </p>
+        </div>
+        <div className="preDataNP preDataNP_1">
+          <p>Flat: </p>
+          <p>Building:</p>
+        </div>
       </div>
       <div className="preDataNP preDataNP_2">
         <p>Street: </p>
@@ -51,7 +53,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
       <hr />
       <br />
       <div className="casher">
-        <p style={{ display: "none" }}>Cashier: EP-Othaim Al Ahsa-Al Ahsa</p>
+        <p style={{ display: "none" }}>Cachier: </p>
         <p>Salesperson: EXPO </p>
         <div className="date">
           <p>{new Date().toLocaleString()}</p>
@@ -85,11 +87,17 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
               : ""}
           </tbody>
         </table>
-        <p>VAT 15% {Math.ceil(itemsPrice * 15) / 100}</p>
+        <hr />
+        <p style={{ marginTop: "15px" }}>
+          VAT 15% {Math.ceil(itemsPrice * 15) / 100}
+        </p>
+        <br />
         <h4 className="px-2">Total without VAT {Math.ceil(itemsPrice)} SAR</h4>
+        <br />
         <h4 className="px-2">
           Total Amount include VAT: {(itemsPrice * 15) / 100 + itemsPrice} SAR
         </h4>
+        <br />
         <p>
           {method === "Mada"
             ? "payment by : Mada(مدى)"

@@ -7,7 +7,7 @@ export default function Main() {
   return (
     <Router>
       <div>
-        {/* <nav>
+        <nav>
           <ul className="links">
             <li>
               <Link to="/">Home</Link>
@@ -16,7 +16,7 @@ export default function Main() {
               <Link to="/invoices">Invoices</Link>
             </li>
           </ul>
-        </nav> */}
+        </nav>
       </div>
       <div>
         <Switch>

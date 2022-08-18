@@ -7,20 +7,27 @@
   right: 25px;
   font-family: "Source Code Pro", "Silkscreen", cursive;
   font-size: 0.7rem;
-  width: 226px;
+  width: 350px;
   height: 90vh;
   padding: 12px 6px;
   text-align: center;
   border: 1px dotted rgba(165, 165, 165, 0.5);
   margin: auto;
   padding: 10px;
-  background: rgba(231, 228, 228, 0.2);
+}
+
+.g1 {
+  margin-top: 15px;
+}
+
+p {
+  font-size: 12px;
 }
 
 .preDataNP {
   display: flex;
   font-size: 0.5rem;
-  justify-content: space-between;
+  justify-content: space-around;
   flex: 1;
 }
 
@@ -91,4 +98,11 @@ td {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.p-5 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 15px;
 }
