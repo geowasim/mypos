@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/mypos/static/css/main.6ead2cfa.css",
+    "main.js": "/mypos/static/js/main.5d582acc.js",
+    "static/js/787.e9da585f.chunk.js": "/mypos/static/js/787.e9da585f.chunk.js",
+    "static/media/QandellaCompanyLogo1.png": "/mypos/static/media/QandellaCompanyLogo1.f666422c02bb6af5a36c.png",
+    "index.html": "/mypos/index.html",
+    "main.6ead2cfa.css.map": "/mypos/static/css/main.6ead2cfa.css.map",
+    "main.5d582acc.js.map": "/mypos/static/js/main.5d582acc.js.map",
+    "787.e9da585f.chunk.js.map": "/mypos/static/js/787.e9da585f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ead2cfa.css",
+    "static/js/main.5d582acc.js"
+  ]
+}
