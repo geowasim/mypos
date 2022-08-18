@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import MyLogo from "./logoForPrint.png";
 import "./ComponentToPrint.css";
 
 export const ComponentToPrint = React.forwardRef((props, ref) => {
   const { cartItems, itemsPrice, method, paidMoney, change } = props;
+
+  const [data, setData] = useState(JSON.parse(localStorage.getItem("SN")));
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("SN"));
+    if (items) {
+      setData((data) => data, items);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem("SN", JSON.stringify(data));
+    }
+  }, [data]);
 
   return (
     <div className="fatorah" ref={ref}>
@@ -39,7 +55,8 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
         <p>Salesperson: EXPO </p>
         <div className="date">
           <p>{new Date().toLocaleString()}</p>
-          <span>order# {Date.parse(new Date())}</span>
+          <span>order# {data[data.length - 1].sn + 1}</span>
+          {/* String(Number(year) - 1000) */}
         </div>
       </div>
       <div ref={ref} className="p-5">
@@ -91,7 +108,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
               <span>SAR {paidMoney} </span> : المبلغ المستلم
             </p>
             <p>
-              <span>SAR {change} </span> : المعاد للعميل
+              <span>SAR {change} </span> : المتبقي للعميل
             </p>
           </>
         )}
@@ -99,3 +116,24 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
     </div>
   );
 });
+
+// const [allData, setAllData] = useState(
+//   JSON.parse(localStorage.getItem("step_d")) || [
+//     {
+//       dateTime: `${
+//         new Date().toLocaleTimeString() +
+//         " - " +
+//         new Date().toLocaleDateString()
+//       }`,
+//       sn: 20,
+//       items: [],
+//       totalWithoutVat: 0,
+//       vat: 0,
+//       total: 0,
+//       qty: 0,
+//       paymentMehod: "",
+//       paid: 0,
+//       change: 0,
+//     },
+//   ]
+// );

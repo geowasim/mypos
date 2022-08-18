@@ -7,8 +7,20 @@ export default function Main() {
   return (
     <Router>
       <div>
+        {/* <nav>
+          <ul className="links">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/invoices">Invoices</Link>
+            </li>
+          </ul>
+        </nav> */}
+      </div>
+      <div>
         <Switch>
-          <Route path="/toallinv">
+          <Route path="/invoices">
             <Invoices />
           </Route>
           <Route path="/">

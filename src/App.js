@@ -1,47 +1,72 @@
 import Products from "./products/Products";
 import "./App.css";
 import Item from "./Item/Item";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Basket from "./cart/Cart";
-// import PerfumeContext from "./context/ProductContext";
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, "0");
+}
+
+function formatDate(date) {
+  return [
+    date.getFullYear(),
+
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+  ].join("");
+}
+
+const OrderNumberContext = createContext();
 
 function App() {
   const [item, setItem] = useState(null);
   const [cartItems, setCartItems] = useState([]);
+  const [orderNumber, setOrderNumber] = useState(formatDate(new Date()) + 1000);
+
   const [data, setData] = useState(
     JSON.parse(localStorage.getItem("SN")) || [
       {
-        sn: `${new Date()
-          .toLocaleDateString()
-          .split("")
-          .filter((x) => x !== "/")
-          .join("")}`,
-        am: "000",
-        date: `${new Date().toLocaleDateString()}`,
+        sn: orderNumber,
+        items: [],
+        totalWithoutVat: 0,
+        vat: 0,
+        Amount: 0,
+        qty: 0,
+        method: "",
+        paid: 0,
+        change: 0,
+        dateTime: `${
+          new Date().toLocaleTimeString() +
+          " - " +
+          new Date().toLocaleDateString()
+        }`,
       },
     ]
   );
 
+  // getData for component
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("SN"));
-    console.log(items);
     if (items) {
       setData((data) => data, items);
     }
-    console.log(data);
   }, [data]);
 
+  // setData
   useEffect(() => {
     if (data) {
       localStorage.setItem("SN", JSON.stringify(data));
     }
   }, [data]);
 
-  const handleData = () => {
+  const handleData = (ob) => {
     const serialN = Number(data[data.length - 1].sn) + 1;
-    const am = Math.floor(Math.random() * 10);
 
-    setData((data) => [...data, { sn: serialN, am: am }]);
+    setData((data) => [
+      ...data,
+      { sn: serialN, Ammount: ob, date: new Date().toLocaleDateString() },
+    ]);
   };
 
   const resetCartItems = () => {
@@ -79,34 +104,37 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header
-        className="App-header"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <Products findItem={findItem} />
-        {/* <button onClick={handleData}>,,,,,,,</button>
-        {data.map((item) => (
-          <div
-            key={item.sn + 1}
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <p>SN/{item.sn}/</p>
-            <p>Ammount:/{item.am}/</p>
-          </div>
-        ))} */}
-      </header>
-      <Item item={item} onAdd={onAdd} />
-      <Basket
-        cartItems={cartItems}
-        onAdd={onAdd}
-        onRemove={onRemove}
-        resetCartItems={resetCartItems}
-        handleData={handleData}
-      />
-      {/* <Invoice cartItems={cartItems} totalPrice={totalPrice} /> */}
-    </div>
+    <OrderNumberContext.Provider value={orderNumber}>
+      <div className="App">
+        <header
+          className="App-header"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <Products findItem={findItem} />
+        </header>
+        <Item item={item} onAdd={onAdd} />
+        <Basket
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          resetCartItems={resetCartItems}
+          handleData={handleData}
+        />
+        {/* <Invoice cartItems={cartItems} totalPrice={totalPrice} /> */}
+      </div>
+    </OrderNumberContext.Provider>
   );
 }
 
 export default App;
+
+/* <button onClick={handleData}>,,,,,,,</button>
+        {data.map((item) => (
+          <div
+          key={item.sn + 1}
+            style={{ display: "flex", flexDirection: "column" }}
+            >
+            <p>SN/{item.sn}/</p>
+            <p>Ammount:/{item.am}/</p>
+          </div>
+        ))} */

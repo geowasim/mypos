@@ -5,14 +5,11 @@ const InputCash = (props) => {
   const [value, setValue] = useState(0);
   const [isPrintShown, setIsPrintShown] = useState(false);
   const { isCach, handlePrint, resetCartItems, isChange, handleData } = props;
-
   useEffect(() => {
     if (isPrintShown) {
       isCach(isPrintShown);
     }
     isChange(value);
-    console.log("v", value);
-    console.log("is", isChange(value));
   }, [props.val2, isPrintShown, isCach, value, isChange]);
 
   const addNum = (val, val2) => {

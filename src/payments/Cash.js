@@ -46,9 +46,9 @@ export default function Cash(props) {
           values2={count2 ? count2 : ""}
           isCach={isCach}
           handlePrint={handlePrint}
-          resetCartItems={resetCartItems}
           isChange={isChange}
           handleData={handleData}
+          resetCartItems={resetCartItems}
         />
       </div>
     </div>

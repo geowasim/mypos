@@ -29,8 +29,6 @@ export default function Payment(props) {
   const handleCashe = () => {
     setShowCashe(!showCashe);
     !showCashe ? setShowMethod("Cash") : setShowMethod("Mada");
-
-    // console.log(showMethod);
   };
   return (
     <div className="payments">

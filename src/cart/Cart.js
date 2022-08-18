@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { ComponentToPrint } from "../ComponentToPrint/ComponentToPrint";
 
@@ -81,6 +81,7 @@ const Basket = (props) => {
                 method={method}
                 paidMoney={paidMoney}
                 change={change}
+                handleData={handleData}
               />
               {/* ------------ */}
             </div>

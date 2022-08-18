@@ -48,3 +48,17 @@
     transform: rotate(360deg);
   }
 }
+
+.links {
+  display: flex;
+  list-style: none;
+  margin: 5px 15px;
+}
+
+.links li {
+  margin-left: 20px;
+}
+
+.links li a {
+  text-decoration: none;
+}
